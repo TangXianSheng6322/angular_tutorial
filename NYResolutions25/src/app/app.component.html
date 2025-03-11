@@ -4,39 +4,58 @@
       <label for="specificSizeInputName" class="visually-hidden"
         >Resolution</label
       >
-      <input type="text" class="form-control" [(ngModel)]="newResolutionText" />
+      <input
+        type="text"
+        name="new-resolution-text"
+        class="form-control"
+        [(ngModel)]="newResolutionText"
+      />
     </div>
     <div class="col-auto">
       <button
         type="submit"
         class="btn btn-primary"
-        (click)="$event.preventDefault(); addNewResolution($event)"
+        (click)="$event.preventDefault(); addNewResolution()"
       >
         Add Resolution
       </button>
     </div>
   </form>
 
-  <div *ngIf="items.length === 0; else showItems">
-    There are no items to display
+  <div class="row mt-3">
+    <select
+      class="form-select"
+      [(ngModel)]="listFilter"
+      (ngModelChange)="filterChanged($event)"
+    >
+      <option value="0">All</option>
+      <option value="1">Unfulfilled</option>
+      <option value="2">Fulfilled</option>
+    </select>
   </div>
 
-  <ng-template #showItems
-    ><ul class="res-list">
-      <li *ngFor="let item of items; index as ii">
-        <div class="form-check">
-          <label for="" class="form-check-label">
-            <input
-              type="checkbox"
-              class="checkbox"
-              [checked]="item.isComplete"
-              [attr.data-index]="ii"
-              (click)="toggleItem(item)"
-            />
-            {{ item.ResolutionText }}
-          </label>
-        </div>
-      </li>
-    </ul></ng-template
-  >
+  <div class="row mt-3">
+    <div *ngIf="visibleItems.length === 0; else showItems">
+      There are no items to display
+    </div>
+
+    <ng-template #showItems
+      ><ul class="res-list">
+        <li *ngFor="let item of visibleItems; index as ii">
+          <div class="form-check">
+            <label for="" class="form-check-label">
+              <input
+                type="checkbox"
+                class="checkbox"
+                [checked]="item.isComplete"
+                [attr.data-index]="ii"
+                (click)="toggleItem(item)"
+              />
+              {{ item.ResolutionText }}
+            </label>
+          </div>
+        </li>
+      </ul></ng-template
+    >
+  </div>
 </div>
