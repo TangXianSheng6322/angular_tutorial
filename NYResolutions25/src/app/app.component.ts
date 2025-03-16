@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ResolutionItem } from '../shared/models/resolutionItem';
-import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ResolutionListComponent } from './resolution-list/resolution-list.component';
 const filters = [
   (item: ResolutionItem) => item,
   (item: ResolutionItem) => !item.isComplete,
@@ -9,7 +9,7 @@ const filters = [
 ];
 @Component({
   selector: 'app-root',
-  imports: [NgFor, NgIf, FormsModule],
+  imports: [FormsModule, ResolutionListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

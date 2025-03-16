@@ -31,27 +31,6 @@
   </div>
 
   <div class="row mt-3">
-    <div *ngIf="visibleItems.length === 0; else showItems">
-      There are no items to display
-    </div>
-
-    <ng-template #showItems
-      ><ul class="res-list">
-        <li *ngFor="let item of visibleItems; index as ii">
-          <div class="form-check">
-            <label for="" class="form-check-label">
-              <input
-                type="checkbox"
-                class="checkbox"
-                [checked]="item.isComplete"
-                [attr.data-index]="ii"
-                (click)="toggleItem(item)"
-              />
-              {{ item.ResolutionText }}
-            </label>
-          </div>
-        </li>
-      </ul></ng-template
-    >
+    <app-resolution-list [resolutions]="visibleItems"></app-resolution-list>
   </div>
 </div>
