@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { ResolutionItem } from '../shared/models/resolutionItem';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+const filters = [
+  (item: ResolutionItem) => item,
+  (item: ResolutionItem) => !item.isComplete,
+  (item: ResolutionItem) => item.isComplete,
+];
 @Component({
   selector: 'app-root',
   imports: [NgFor, NgIf, FormsModule],
@@ -19,23 +23,16 @@ export class AppComponent {
   //Data Binding
   title = 'NYResolutions25';
   newResolutionText = '';
-  listFilter: String = '0';
-  visibleItems: ResolutionItem[] = this.items;
+  listFilter: any = '0';
+
+  get visibleItems(): ResolutionItem[] {
+    return this.items.filter(filters[this.listFilter]);
+  }
 
   //Functions
   addNewResolution() {
     this.items.push(new ResolutionItem(this.newResolutionText));
     this.newResolutionText = '';
-  }
-
-  filterChanged(value: any) {
-    if (value === '0') {
-      this.visibleItems = this.items;
-    } else if (value === '1') {
-      this.visibleItems = this.items.filter((item) => !item.isComplete);
-    } else {
-      this.visibleItems = this.items.filter((item) => item.isComplete);
-    }
   }
 
   toggleItem(item: ResolutionItem) {
