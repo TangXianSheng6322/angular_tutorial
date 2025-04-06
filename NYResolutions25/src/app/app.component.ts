@@ -3,14 +3,16 @@ import { ResolutionItem } from '../shared/models/resolutionItem';
 import { FormsModule } from '@angular/forms';
 import { ResolutionListComponent } from './resolution-list/resolution-list.component';
 import { AddResolutionFormComponent } from './add-resolution-form/add-resolution-form.component';
-const filters = [
-  (item: ResolutionItem) => item,
-  (item: ResolutionItem) => !item.isComplete,
-  (item: ResolutionItem) => item.isComplete,
-];
+import { ResolutionFilterComponent } from './resolution-filter/resolution-filter.component';
+
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, ResolutionListComponent, AddResolutionFormComponent],
+  imports: [
+    FormsModule,
+    ResolutionListComponent,
+    AddResolutionFormComponent,
+    ResolutionFilterComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -21,12 +23,9 @@ export class AppComponent {
     new ResolutionItem('Find Grass That Cuts Itself'),
   ];
 
-  //Data Binding
-  title = 'NYResolutions25';
-
-  listFilter: any = '0';
+  filter: any = () => {};
 
   get visibleItems(): ResolutionItem[] {
-    return this.items.filter(filters[this.listFilter]);
+    return this.items.filter(this.filter);
   }
 }
