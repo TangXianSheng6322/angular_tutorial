@@ -24,8 +24,5 @@ export class AppComponent {
   ];
 
   filter: any = () => {};
-
-  get visibleItems(): ResolutionItem[] {
-    return this.items.filter(this.filter);
-  }
+  title = 'NYResolutions25';
 }

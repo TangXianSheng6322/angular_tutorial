@@ -14,9 +14,11 @@ const filters = [
 })
 export class ResolutionFilterComponent implements OnInit {
   @Output() filter = new EventEmitter<any>();
+
   ngOnInit(): void {
     this.filter.emit(filters[0]);
   }
+
   listFilter: any = '0';
 
   changeFilter(value: any) {
