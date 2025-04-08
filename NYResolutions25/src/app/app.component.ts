@@ -23,6 +23,6 @@ export class AppComponent {
     new ResolutionItem('Find Grass That Cuts Itself'),
   ];
 
-  filter: any = () => {};
+  filter: any;
   title = 'NYResolutions25';
 }

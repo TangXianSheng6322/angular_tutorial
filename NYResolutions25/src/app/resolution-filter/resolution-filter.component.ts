@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ResolutionItem } from '../../shared/models/resolutionItem';
 const filters = [
@@ -13,15 +13,17 @@ const filters = [
   styleUrl: './resolution-filter.component.css',
 })
 export class ResolutionFilterComponent implements OnInit {
-  @Output() filter = new EventEmitter<any>();
+  @Input() filter: any;
+  @Output() filterChange = new EventEmitter<any>();
 
   ngOnInit(): void {
-    this.filter.emit(filters[0]);
+    this.updateFilter('0');
   }
 
   listFilter: any = '0';
 
-  changeFilter(value: any) {
-    this.filter.emit(filters[value]);
+  updateFilter(value: any) {
+    this.filter = filters[value];
+    this.filterChange.emit(this.filter);
   }
 }
