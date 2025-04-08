@@ -4,19 +4,9 @@
 
 <ng-template #showItems
   ><ul class="res-list">
-    <li *ngFor="let item of resolutions; index as ii">
-      <div class="form-check">
-        <label for="" class="form-check-label">
-          <input
-            type="checkbox"
-            class="checkbox"
-            [checked]="item.isComplete"
-            [attr.data-index]="ii"
-            (click)="toggleItem(item)"
-          />
-          {{ item.ResolutionText }}
-        </label>
-      </div>
-    </li>
-  </ul></ng-template
->
+    <resolution-list-item
+      *ngFor="let resolution of resolutions"
+      [ResolutionText]="resolution.ResolutionText"
+      [(fulfilled)]="resolution.isComplete"
+    ></resolution-list-item></ul
+></ng-template>
