@@ -8,8 +8,10 @@
   </div>
 
   <div class="row mt-3">
-    <app-resolution-list
-      [resolutions]="items.filter(filter)"
-    ></app-resolution-list>
+    <div class="col-sm-4">
+      <app-resolution-list
+        [resolutions]="items.filter(filter)"
+      ></app-resolution-list>
+    </div>
   </div>
 </div>

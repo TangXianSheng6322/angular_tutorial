@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ResolutionListComponent } from './resolution-list/resolution-list.component';
 import { AddResolutionFormComponent } from './add-resolution-form/add-resolution-form.component';
 import { ResolutionFilterComponent } from './resolution-filter/resolution-filter.component';
+import events from './../shared/services/EventService';
 
 @Component({
   selector: 'app-root',
@@ -25,4 +26,11 @@ export class AppComponent {
 
   filter: any;
   title = 'NYResolutions25';
+
+  constructor() {
+    events.listen('removeResolution', (resolution: any) => {
+      //todo remove resolution
+      console.log(resolution);
+    });
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgClass } from '@angular/common';
+import events from './../../shared/services/EventService';
 @Component({
   selector: 'resolution-list-item',
   imports: [NgClass],
@@ -19,5 +20,9 @@ export class ResolutionListItemComponent {
   toggleFulfilled() {
     this.fulfilled = !this.fulfilled;
     this.fulfilledChange.emit(this.fulfilled);
+  }
+
+  removeResolution() {
+    events.emit('removeResolution', this.ResolutionText);
   }
 }
