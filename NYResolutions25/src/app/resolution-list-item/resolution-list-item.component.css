@@ -1,3 +1,6 @@
 #idk {
   margin: 10px;
 }
+.strikeout {
+  text-decoration: line-through;
+}
