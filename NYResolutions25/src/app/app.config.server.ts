@@ -1,11 +1,10 @@
 import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
 import { appConfig } from './app.config';
+// import { EventService } from '../shared/services/EventService';
 
 const serverConfig: ApplicationConfig = {
-  providers: [
-    provideServerRendering(),
-  ]
+  providers: [provideServerRendering()],
 };
 
 export const config = mergeApplicationConfig(appConfig, serverConfig);
