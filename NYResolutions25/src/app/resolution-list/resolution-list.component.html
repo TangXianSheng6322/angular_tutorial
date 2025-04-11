@@ -6,7 +6,6 @@
   ><ul class="res-list">
     <resolution-list-item
       *ngFor="let resolution of resolutions"
-      [ResolutionText]="resolution.ResolutionText"
-      [(fulfilled)]="resolution.isComplete"
+      [resolution]="resolution"
     ></resolution-list-item></ul
 ></ng-template>

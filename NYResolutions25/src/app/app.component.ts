@@ -30,7 +30,8 @@ export class AppComponent {
   constructor() {
     events.listen('removeResolution', (resolution: any) => {
       //todo remove resolution
-      console.log(resolution);
+      let index = this.items.indexOf(resolution);
+      this.items.splice(index, 1);
     });
   }
 }

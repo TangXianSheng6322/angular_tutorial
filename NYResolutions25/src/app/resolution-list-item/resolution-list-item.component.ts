@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgClass } from '@angular/common';
 import events from './../../shared/services/EventService';
+import { ResolutionItem } from '../../shared/models/resolutionItem';
 @Component({
   selector: 'resolution-list-item',
   imports: [NgClass],
@@ -8,21 +9,18 @@ import events from './../../shared/services/EventService';
   styleUrl: './resolution-list-item.component.css',
 })
 export class ResolutionListItemComponent {
-  @Input() ResolutionText!: string;
-  @Input() fulfilled!: boolean;
-  @Output() fulfilledChange = new EventEmitter<boolean>();
+  @Input() resolution!: ResolutionItem;
 
   get cssClasses() {
     // return this.fulfilled ? ['strikeout', 'text-muted'] : [];
-    return { 'strikeout text-muted': this.fulfilled };
+    return { 'strikeout text-muted': this.resolution.isComplete };
   }
 
   toggleFulfilled() {
-    this.fulfilled = !this.fulfilled;
-    this.fulfilledChange.emit(this.fulfilled);
+    this.resolution.isComplete = !this.resolution.isComplete;
   }
 
   removeResolution() {
-    events.emit('removeResolution', this.ResolutionText);
+    events.emit('removeResolution', this.resolution);
   }
 }
