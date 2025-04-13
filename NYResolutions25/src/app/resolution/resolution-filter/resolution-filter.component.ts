@@ -1,6 +1,6 @@
 import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ResolutionItem } from '../../shared/models/resolutionItem';
+import { ResolutionItem } from '../../../shared/models/resolutionItem';
 const filters = [
   (item: ResolutionItem) => item,
   (item: ResolutionItem) => !item.isComplete,

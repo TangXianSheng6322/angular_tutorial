@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { ResolutionItem } from '../../shared/models/resolutionItem';
+import { ResolutionItem } from '../../../shared/models/resolutionItem';
 import { FormsModule } from '@angular/forms';
 
 @Component({

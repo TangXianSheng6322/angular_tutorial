@@ -1,21 +1,14 @@
 import { Component, importProvidersFrom, OnInit } from '@angular/core';
 import { ResolutionItem } from '../shared/models/resolutionItem';
 import { FormsModule } from '@angular/forms';
-import { ResolutionListComponent } from './resolution-list/resolution-list.component';
-import { AddResolutionFormComponent } from './add-resolution-form/add-resolution-form.component';
-import { ResolutionFilterComponent } from './resolution-filter/resolution-filter.component';
+
 import { EventService } from './../shared/services/EventService';
-import { ResolutionService } from './resolution.service';
-import { HttpClient } from '@angular/common/http';
+import { ResolutionService } from './resolution/resolution.service';
+import { ResolutionModule } from './resolution/resolution.module';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    FormsModule,
-    ResolutionListComponent,
-    AddResolutionFormComponent,
-    ResolutionFilterComponent,
-  ],
+  imports: [FormsModule, ResolutionModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

@@ -5,7 +5,7 @@ import {
   HttpHeaders,
   HttpParams,
 } from '@angular/common/http';
-import { ResolutionItem } from '../shared/models/resolutionItem';
+import { ResolutionItem } from '../../shared/models/resolutionItem';
 import { catchError, throwError } from 'rxjs';
 
 @Injectable({

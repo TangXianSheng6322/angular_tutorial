@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { EventService } from './../../shared/services/EventService';
-import { ResolutionItem } from '../../shared/models/resolutionItem';
+import { EventService } from '../../../shared/services/EventService';
+import { ResolutionItem } from '../../../shared/models/resolutionItem';
 @Component({
   selector: 'resolution-list-item',
   imports: [NgClass],

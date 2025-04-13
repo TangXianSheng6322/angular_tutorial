@@ -1,6 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { ResolutionItem } from '../../shared/models/resolutionItem';
+import { ResolutionItem } from '../../../shared/models/resolutionItem';
 import { ResolutionListItemComponent } from '../resolution-list-item/resolution-list-item.component';
 
 @Component({
