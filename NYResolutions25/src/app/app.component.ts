@@ -20,7 +20,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  items!: ResolutionItem[];
+  items: ResolutionItem[] = [];
+  // items!: ResolutionItem[]; created an error with filters undefined
 
   // = [
   //   new ResolutionItem('Learn Angular'),
@@ -43,8 +44,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.resolutionService.getResolutions().subscribe((data: any) => {
-      this.items = data;
+    this.resolutionService.getResolutions().subscribe({
+      next: (data: any) => {
+        this.items = data;
+      },
+      error: (error: any) => {
+        alert(error.message);
+      },
     });
   }
 }
