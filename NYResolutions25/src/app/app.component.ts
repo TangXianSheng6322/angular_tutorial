@@ -6,10 +6,18 @@ import { EventService } from './../shared/services/EventService';
 import { ResolutionService } from './resolution/resolution.service';
 import { ResolutionModule } from './resolution/resolution.module';
 import { ResolutionComponent } from './resolution/resolution.component';
+import { ContactComponent } from './contact/contact.component';
+import { ContactModule } from './contact/contact.module';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, ResolutionModule, ResolutionComponent],
+  imports: [
+    FormsModule,
+    ResolutionModule,
+    ResolutionComponent,
+    ContactModule,
+    ContactComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
