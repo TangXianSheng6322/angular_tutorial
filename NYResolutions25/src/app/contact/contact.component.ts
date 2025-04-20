@@ -1,17 +1,26 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
 export class ContactComponent {
   contactForm = new FormGroup({
-    senderName: new FormControl(''),
-    senderEmail: new FormControl(''),
-    senderMessage: new FormControl(''),
+    senderName: new FormControl('', Validators.required),
+    senderEmail: new FormControl('', [Validators.required, Validators.email]),
+    senderMessage: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+    ]),
   });
 
   submitForm() {
